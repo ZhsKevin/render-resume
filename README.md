@@ -36,17 +36,13 @@
 
 ### 演示页面
 
-#### 电脑端：
+#### 电脑端效果：
 
-预览：https://cdn.jsdelivr.net/gh/ZhsKevin/cdn/projects/resume/11.png
+<img src="https://zhs-common.oss-cn-beijing.aliyuncs.com/projects/resume/11.png" alt="img" style="zoom: 33%;" />
 
-<img src="https://cdn.nlark.com/yuque/0/2022/png/22559567/1647147981439-12e2ed9b-34a7-4f60-bda8-feba09b82cf5.png" alt="img" style="zoom: 33%;" />
+#### 手机端效果：
 
-#### 手机端：
-
-预览：https://cdn.jsdelivr.net/gh/ZhsKevin/cdn/projects/resume/12.png
-
-<img src="https://cdn.nlark.com/yuque/0/2022/png/22559567/1647148250975-f12578b7-44a3-4a28-a94c-ceb568435702.png" alt="img" style="zoom: 50%;" />
+<img src="https://zhs-common.oss-cn-beijing.aliyuncs.com//projects/resume/12.png" alt="img" style="zoom: 50%;" />
 
 
 
