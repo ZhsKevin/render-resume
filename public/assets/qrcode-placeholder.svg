@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">二维码占位图</title>
+  <desc id="desc">用于替代失效外链的二维码占位图。</desc>
+  <rect width="240" height="240" fill="#fff"/>
+  <rect x="8" y="8" width="224" height="224" rx="8" fill="#f7f9fb" stroke="#126ab8" stroke-width="4"/>
+  <g fill="#126ab8">
+    <path d="M32 32h56v56H32zM152 32h56v56h-56zM32 152h56v56H32z"/>
+    <path d="M44 44h32v32H44zM164 44h32v32h-32zM44 164h32v32H44z" fill="#fff"/>
+    <path d="M104 40h16v16h-16zM120 56h16v16h-16zM104 72h32v16h-32zM96 104h16v16H96zM128 96h24v24h-24zM168 104h16v16h-16zM192 104h16v32h-16zM104 136h16v16h-16zM128 136h16v16h-16zM160 136h32v16h-32zM104 168h16v40h-16zM128 160h24v16h-24zM160 168h16v16h-16zM184 168h24v16h-24zM128 192h16v16h-16zM152 192h40v16h-40z"/>
+  </g>
+  <text x="120" y="124" fill="#126ab8" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle">QR</text>
+</svg>

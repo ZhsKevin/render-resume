@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">H&S Logo</title>
+  <rect width="128" height="128" rx="24" fill="#126ab8"/>
+  <path d="M31 34h12v24h42V34h12v60H85V69H43v25H31V34Z" fill="#fff"/>
+  <path d="M57 92c-5-2-9-5-12-8l8-8c3 4 7 6 12 6 4 0 7-2 7-5 0-8-25-4-25-24 0-11 9-20 22-20 8 0 15 3 20 8l-8 8c-3-3-7-5-12-5-5 0-8 2-8 6 0 8 25 4 25 24 0 11-9 19-23 19-3 0-5 0-8-1Z" fill="#d7e9fb"/>
+</svg>

@@ -1,9 +1,7 @@
 .DS_Store
 .idea
 node_modules
-index.html
-main.css
-main.css.map
-main.js
-main.js.map
-yarn.lock
+dist
+.public
+.playwright-cli
+output
