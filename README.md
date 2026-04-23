@@ -4,6 +4,7 @@
 
 ## 效果预览
 Github Pages：https://zhskevin.github.io/render-resume/
+
 PC端：
 
 <img src="imgs/pc.png" width="500" alt="pc端预览" style="zoom:20%;" />
