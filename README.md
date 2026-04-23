@@ -9,7 +9,7 @@ Github Pages部署：https://zhskevin.github.io/render-resume/
 
 PC端：
 
-<img src="imgs/pc.png" width="500" alt="pc端预览" style="zoom:20%;" />
+<img src="imgs/pc.png" alt="pc端预览" style="zoom:20%;" />
 
 移动端：
 
