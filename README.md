@@ -8,7 +8,7 @@ PC端：
 <img src="imgs/pc%E7%AB%AF%E9%A2%84%E8%A7%88.png" alt="pc端预览" style="zoom:20%;" />
 
 移动端：
-<img src="imgs/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A2%84%E8%A7%88.png" alt="移动端预览" style="zoom:33%;" />
+<img src="imgs/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A2%84%E8%A7%88.png" width="360" alt="移动端预览" style="zoom:33%;" />
 
 - `index.html`：放简历文本、链接、图片路径、页面标题等配置。
 - `src/main.scss`：只放样式。
