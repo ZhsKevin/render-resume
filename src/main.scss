@@ -232,7 +232,7 @@ img {
 
   .entry-description-list li {
     padding-left: 0;
-    text-indent: 0;
+    text-indent: 2em;
   }
 
   .description-list p {
@@ -311,7 +311,12 @@ img {
 
   li {
     margin-top: 6px;
-    list-style: disc inside;
+    list-style: none;
+
+    &::before {
+      content: "•";
+      margin-right: 0.45em;
+    }
   }
 }
 

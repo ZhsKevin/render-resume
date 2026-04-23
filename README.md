@@ -3,7 +3,9 @@
 一份简约的在线简历模板，基于 Vite 构建。项目现在把“文本内容 / 简历配置”和“样式 / 渲染逻辑”分开：
 
 ## 效果预览
-Github Pages：https://zhskevin.github.io/render-resume/
+Github Pages部署：https://zhskevin.github.io/render-resume/
+
+静态代码分支：https://github.com/ZhsKevin/render-resume/tree/master
 
 PC端：
 
@@ -25,30 +27,20 @@ PC端：
 - npm 10 或更高版本
 - Git
 
-## 从拉取项目开始
+## 快速开始
 
+### 本地拉取启动项目
 ```bash
-git clone <你的仓库地址>
-cd HS-resume
+git clone git@github.com:ZhsKevin/render-resume.git
 npm install
 npm run dev
 ```
 
-## 配置简历内容
+### 实时对照修改简历内容
 
-简历内容集中在 `index.html` 的 JSON 中，直接编辑即可。常用字段：
+简历内容位于 `index.html` 的 JSON 中，直接编辑即可
 
-- `title`：浏览器标签页标题。
-- `name`：页面顶部姓名。
-- `profilePhoto`：证件照配置，默认关闭。
-- `basics`：求职意向、现居地区、电话、博客、邮箱。
-- `mainSections`：教育经历、校园经历、工作经历、社会实践、项目经历、相关技能。
-- `sideSections`：开发技能、项目演示、联系方式二维码。
-- `footer`：页脚版权、PDF 下载链接、备案信息。
-
-带 `href` 的内容会渲染成链接。电话建议使用 `tel:`，邮箱建议使用 `mailto:`。
-
-## 生成静态页面
+### 修改完成后生成静态页面文件
 
 ```bash
 npm run build
@@ -70,22 +62,18 @@ dist/
 
 ## 发布页面
 
-项目已移除内置发布依赖，保持更轻量。发布时先生成静态目录：
+项目为保持更轻量已移除内置发布依赖，所以需要手动把整个 `dist/` 下的文件上传到你的静态托管服务，例如 GitHub Pages、对象存储、Nginx、宝塔面板或 CDN 控制台。
 
-```bash
-npm run build
-```
+如此分支是已经发布好的文件直接上传后的效果：https://github.com/ZhsKevin/render-resume/tree/master
 
-然后把整个 `dist/` 上传到你的静态托管服务，例如 GitHub Pages、对象存储、Nginx、宝塔面板或 CDN 控制台。
-
+开启githubpages功能后则可直接访问。同理其余对象存储服务商均可提供此类似功能，推荐主流对象存储云服务商如阿里云OOS，腾讯云COS等。
 
 ## 命令速查
 
 ```bash
-npm install       # 安装依赖
-npm run dev      # 本地开发预览
-npm run build    # 生成 dist 静态页面
-npm run preview  # 预览 dist 构建产物
+npm install       # 初始化安装依赖
+npm run dev      # 启动本项目
+npm run build    # 生成静态页面
 ```
 
 
@@ -99,7 +87,7 @@ npm run preview  # 预览 dist 构建产物
 
 如果改的是源码里的 `index.html`，需要重新执行 `npm run build` 才会更新 `dist/index.html`。
 
-### 图片不显示
+### 图片不显示？
 
 确认图片在 `assets/` 中，并且 `index.html` 里使用的是类似 `assets/wechat-qr.png` 的相对路径。
 
@@ -107,7 +95,7 @@ npm run preview  # 预览 dist 构建产物
 
 这是刻意设置的。项目更重视部署后可维护性，因此 `vite.config.js` 里关闭了生产压缩和哈希文件名。
 
-### 文本怎么局部加粗？
+### 文本怎么局部加粗？ / 我的星号消失了？
 
 简历文案支持用一对星号标记局部加粗：
 ```json
@@ -126,7 +114,7 @@ npm run preview  # 预览 dist 构建产物
 }
 ```
 
-### 长文本怎么换行编辑？
+### 长文本怎么编辑？
 
 `index.html` 里的配置是标准 JSON，双引号字符串内部不能直接敲真实换行。下面这种写法会让编辑器标红：
 
@@ -151,7 +139,8 @@ npm run preview  # 预览 dist 构建产物
 }
 ```
 
-如果确实想让页面显示为多短，可以使用 `descriptionList`，此时逗号即代表换行：
+### 长文本怎么换行编辑？
+如果确实想让页面显示为多行，可以使用 `descriptionList`，此时逗号即代表换行：
 
 ```json
 {
