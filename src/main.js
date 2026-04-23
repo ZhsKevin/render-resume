@@ -21,7 +21,7 @@ function createElement(tagName, options = {}) {
   }
 
   if (options.text) {
-    element.textContent = options.text;
+    appendFormattedText(element, options.text);
   }
 
   if (options.href) {
@@ -38,6 +38,83 @@ function createElement(tagName, options = {}) {
   }
 
   return element;
+}
+
+function findClosingStrongMarker(text, startIndex) {
+  for (let index = startIndex; index < text.length; index += 1) {
+    if (text[index] === '\\') {
+      index += 1;
+      continue;
+    }
+
+    if (text[index] === '*') {
+      return index;
+    }
+  }
+
+  return -1;
+}
+
+function parseFormattedText(value) {
+  const text = String(value ?? '');
+  const parts = [];
+  let buffer = '';
+  let isStrong = false;
+
+  function flush() {
+    if (buffer) {
+      parts.push({ text: buffer, isStrong });
+      buffer = '';
+    }
+  }
+
+  for (let index = 0; index < text.length; index += 1) {
+    const char = text[index];
+    const nextChar = text[index + 1];
+
+    if (char === '\\' && nextChar === '*') {
+      buffer += '*';
+      index += 1;
+      continue;
+    }
+
+    if (char === '*') {
+      if (isStrong) {
+        flush();
+        isStrong = false;
+        continue;
+      }
+
+      const closingIndex = findClosingStrongMarker(text, index + 1);
+
+      if (closingIndex > index + 1) {
+        flush();
+        isStrong = true;
+        continue;
+      }
+    }
+
+    buffer += char;
+  }
+
+  flush();
+
+  return parts;
+}
+
+function appendFormattedText(parent, value) {
+  parseFormattedText(value).forEach((part) => {
+    if (!part.isStrong) {
+      parent.append(part.text);
+      return;
+    }
+
+    const strong = createElement('strong', { className: 'text-strong' });
+    strong.textContent = part.text;
+    parent.appendChild(strong);
+  });
+
+  return parent;
 }
 
 function appendChildren(parent, children) {
@@ -96,6 +173,16 @@ function renderDescriptions(descriptions = []) {
   return wrapper;
 }
 
+function renderDescriptionList(items = []) {
+  const list = createElement('ul', { className: 'entry-description-list' });
+
+  items.forEach((item) => {
+    list.appendChild(createElement('li', { text: item }));
+  });
+
+  return list;
+}
+
 function renderEntry(entry) {
   const article = createElement('article', { className: 'entry' });
 
@@ -105,6 +192,10 @@ function renderEntry(entry) {
 
   if (entry.descriptions?.length) {
     article.appendChild(renderDescriptions(entry.descriptions));
+  }
+
+  if (entry.descriptionList?.length) {
+    article.appendChild(renderDescriptionList(entry.descriptionList));
   }
 
   return article;
@@ -228,12 +319,12 @@ function renderHeader() {
 
   resume.basics.forEach((item) => {
     const row = createElement('li');
-    row.append(`${item.label}：`);
+    appendFormattedText(row, `${item.label}：`);
 
     if (item.href) {
       row.appendChild(createElement('a', { text: item.value, href: item.href }));
     } else {
-      row.append(item.value);
+      appendFormattedText(row, item.value);
     }
 
     basics.appendChild(row);

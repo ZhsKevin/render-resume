@@ -35,6 +35,10 @@ a {
   }
 }
 
+.text-strong {
+  font-weight: 800;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -202,11 +206,45 @@ img {
   text-align: center;
 }
 
+.practice {
+  .section-title {
+    font-size: 17px;
+    line-height: 24px;
+  }
+
+  .item-hd {
+    line-height: 24px;
+  }
+
+  .item-name {
+    font-size: 1.1em;
+    line-height: 24px;
+  }
+
+  .entry {
+    margin-left: 2em;
+  }
+
+  .section-content li {
+    padding-left: 0;
+    text-indent: 2em;
+  }
+
+  .entry-description-list li {
+    padding-left: 0;
+    text-indent: 0;
+  }
+
+  .description-list p {
+    text-indent: 2em;
+  }
+}
+
 .section-bd {
   overflow: hidden;
 
   .item {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 }
 
@@ -262,6 +300,19 @@ img {
 
 .description-list {
   color: $text-color;
+}
+
+.entry-description-list {
+  margin: 6px 0 0;
+  color: $text-color;
+  line-height: 1.6;
+  text-align: justify;
+  word-break: break-word;
+
+  li {
+    margin-top: 6px;
+    list-style: disc inside;
+  }
 }
 
 .project-entry {

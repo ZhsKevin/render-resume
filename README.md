@@ -25,7 +25,7 @@ PC端：
 - npm 10 或更高版本
 - Git
 
-## 从拉项目开始
+## 从拉取项目开始
 
 ```bash
 git clone <你的仓库地址>
@@ -34,26 +34,9 @@ npm install
 npm run dev
 ```
 
-默认开发地址：
-
-```text
-http://localhost:9991/
-```
-
 ## 配置简历内容
 
-简历内容集中在 `index.html` 的这段 JSON 中：
-
-```html
-<script id="resume-data" type="application/json">
-  {
-    "title": "张得帅丨简历",
-    "name": "张得帅"
-  }
-</script>
-```
-
-常用字段：
+简历内容集中在 `index.html` 的 JSON 中，直接编辑即可。常用字段：
 
 - `title`：浏览器标签页标题。
 - `name`：页面顶部姓名。
@@ -65,7 +48,85 @@ http://localhost:9991/
 
 带 `href` 的内容会渲染成链接。电话建议使用 `tel:`，邮箱建议使用 `mailto:`。
 
-### 长文本怎么换行编辑
+## 生成静态页面
+
+```bash
+npm run build
+```
+
+输出目录如下：
+
+```text
+dist/
+├── assets/
+│   ├── index.css
+│   ├── index.js
+│   ├── profile-photo.jpg
+│   └── qrcode-placeholder.svg
+└── index.html
+```
+
+生产构建已关闭压缩和哈希文件名，所以 `index.js` 和 `index.css` 会保持相对可读。
+
+## 发布页面
+
+项目已移除内置发布依赖，保持更轻量。发布时先生成静态目录：
+
+```bash
+npm run build
+```
+
+然后把整个 `dist/` 上传到你的静态托管服务，例如 GitHub Pages、对象存储、Nginx、宝塔面板或 CDN 控制台。
+
+
+## 命令速查
+
+```bash
+npm install       # 安装依赖
+npm run dev      # 本地开发预览
+npm run build    # 生成 dist 静态页面
+npm run preview  # 预览 dist 构建产物
+```
+
+
+
+
+## 常见问题
+
+### 改了文案是否要重新构建？
+
+如果改的是 `dist/index.html` 里的 `resume-data` 配置，不需要重新构建。
+
+如果改的是源码里的 `index.html`，需要重新执行 `npm run build` 才会更新 `dist/index.html`。
+
+### 图片不显示
+
+确认图片在 `assets/` 中，并且 `index.html` 里使用的是类似 `assets/wechat-qr.png` 的相对路径。
+
+### JS/CSS 为什么不压缩？
+
+这是刻意设置的。项目更重视部署后可维护性，因此 `vite.config.js` 里关闭了生产压缩和哈希文件名。
+
+### 文本怎么局部加粗？
+
+简历文案支持用一对星号标记局部加粗：
+```json
+{
+  "heading": "2088.1 - 2088.3  某某某某软件*科技*有限公司 ｜ Java开发工程师"
+}
+```
+
+页面会显示为“某某某某软件科技有限公司”，其中“科技”加粗。这个写法适用于标题、列表项、描述、个人信息、页脚等普通文本。
+
+如果确实需要显示星号本身，并且它刚好会被识别成加粗标记，可以在 JSON 里写 `\\*`：
+
+```json
+{
+  "heading": "这里显示星号：\\*"
+}
+```
+
+### 长文本怎么换行编辑？
 
 `index.html` 里的配置是标准 JSON，双引号字符串内部不能直接敲真实换行。下面这种写法会让编辑器标红：
 
@@ -90,17 +151,23 @@ http://localhost:9991/
 }
 ```
 
-如果确实想让页面显示为两段，可以在字符串里写 `\n`：
+如果确实想让页面显示为多短，可以使用 `descriptionList`，此时逗号即代表换行：
 
 ```json
 {
-  "descriptions": [
-    "第一段文字\n第二段文字"
+  "heading": "2021.7 - 2025.7  泛微网络科技股份有限公司 ｜ 流程引擎组 ｜ Java开发工程师",
+  "descriptionList": [
+    "第一行文字",
+    "第二行文字",
+    "第三行文字"
   ]
 }
 ```
 
-### 配置证件照
+`descriptionList` 里的每一项都会显示成一条圆点说明，也支持 `*局部加粗*`。
+
+
+### 怎么配置证件照？
 
 证件照开关在 `index.html` 的 `profilePhoto` 字段中，建议选择白底证件照：
 
@@ -118,7 +185,7 @@ http://localhost:9991/
 - `enabled: true`：显示证件照，顶部蓝色线会缩短到照片左侧。
 - `src`：图片路径。建议把证件照放到 `assets/profile-photo.jpg`，构建后路径仍然是 `assets/profile-photo.jpg`。
 
-## 配置二维码和图片
+## 怎么配置二维码和图片？
 
 公共图片放在：
 
@@ -191,70 +258,8 @@ src/main.scss
 
 样式变化需要重新执行 `npm run build`，因为 CSS 是从 `src/main.scss` 生成的。
 
-## 生成静态页面
 
-```bash
-npm run build
-```
-
-生成结果在：
-
-```text
-dist/
-```
-
-当前构建配置会输出可读文件名：
-
-```text
-dist/
-├── assets/
-│   ├── index.css
-│   ├── index.js
-│   ├── profile-photo.jpg
-│   └── qrcode-placeholder.svg
-└── index.html
-```
-
-生产构建已关闭压缩和哈希文件名，所以 `index.js` 和 `index.css` 会保持相对可读。
-
-## 修改已生成页面
-
-如果只改文本、链接、图片路径、备案信息等内容：
-
-```text
-dist/index.html
-```
-
-改完直接刷新页面即可，不需要重新构建。
-
-如果改的是样式或渲染逻辑：
-
-- 样式：修改 `src/main.scss` 后执行 `npm run build`。
-- 逻辑：修改 `src/main.js` 后执行 `npm run build`。
-
-## 本地检查构建产物
-
-```bash
-npm run preview
-```
-
-默认访问：
-
-```text
-http://localhost:9991/
-```
-
-## 发布页面
-
-项目已移除内置发布依赖，保持更轻量。发布时先生成静态目录：
-
-```bash
-npm run build
-```
-
-然后把整个 `dist/` 上传到你的静态托管服务，例如 GitHub Pages、对象存储、Nginx、宝塔面板或 CDN 控制台。
-
-## 配置自定义域名
+### 配置自定义域名
 
 如需自定义域名，创建：
 
@@ -265,28 +270,3 @@ public/CNAME
 内容只写域名本身，不要写 `https://`。
 
 构建时，Vite 会自动把它复制到 `dist/CNAME`。
-
-## 常见问题
-
-### 改了文案是否要重新构建？
-
-如果改的是 `dist/index.html` 里的 `resume-data` 配置，不需要重新构建。
-
-如果改的是源码里的 `index.html`，需要重新执行 `npm run build` 才会更新 `dist/index.html`。
-
-### 图片不显示
-
-确认图片在 `assets/` 中，并且 `index.html` 里使用的是类似 `assets/wechat-qr.png` 的相对路径。
-
-### JS/CSS 为什么不压缩？
-
-这是刻意设置的。项目更重视部署后可维护性，因此 `vite.config.js` 里关闭了生产压缩和哈希文件名。
-
-## 命令速查
-
-```bash
-npm install       # 安装依赖
-npm run dev      # 本地开发预览
-npm run build    # 生成 dist 静态页面
-npm run preview  # 预览 dist 构建产物
-```
