@@ -3,6 +3,8 @@
 一份简约的在线简历模板，基于 Vite 构建。项目现在把“文本内容 / 简历配置”和“样式 / 渲染逻辑”分开：
 
 ## 效果预览
+Github Pages：https://zhskevin.github.io/render-resume/
+
 PC端：
 
 <img src="imgs/pc.png" width="500" alt="pc端预览" style="zoom:20%;" />
