@@ -2,6 +2,13 @@
 
 一份简约的在线简历模板，基于 Vite 构建。项目现在把“文本内容 / 简历配置”和“样式 / 渲染逻辑”分开：
 
+## 效果预览
+PC端：
+![pc端预览.png](imgs/pc%E7%AB%AF%E9%A2%84%E8%A7%88.png)
+
+移动端：
+![移动端预览.png](imgs/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A2%84%E8%A7%88.png)
+
 - `index.html`：放简历文本、链接、图片路径、页面标题等配置。
 - `src/main.scss`：只放样式。
 - `src/main.js`：只读取 `index.html` 里的配置并渲染页面。
@@ -105,14 +112,14 @@ http://localhost:9991/
 
 - `enabled: false`：不显示证件照，页面保持无照片布局。
 - `enabled: true`：显示证件照，顶部蓝色线会缩短到照片左侧。
-- `src`：图片路径。建议把证件照放到 `public/assets/profile-photo.jpg`，构建后路径就是 `assets/profile-photo.jpg`。
+- `src`：图片路径。建议把证件照放到 `assets/profile-photo.jpg`，构建后路径仍然是 `assets/profile-photo.jpg`。
 
 ## 配置二维码和图片
 
 公共图片放在：
 
 ```text
-public/assets/
+assets/
 ```
 
 构建后会复制到：
@@ -131,7 +138,7 @@ dist/assets/
 }
 ```
 
-替换成自己的图片时，把文件放进 `public/assets/`，再把 `image` 改成对应路径即可，例如：
+替换成自己的图片时，把文件放进 `assets/`，再把 `image` 改成对应路径即可，例如：
 
 ```json
 {
@@ -152,7 +159,7 @@ dist/assets/
 默认文件位置：
 
 ```text
-public/assets/site-logo.svg
+assets/site-logo.svg
 ```
 
 如果要替换成自己的 logo，直接替换这个文件即可。也可以改成其他文件名，例如：
@@ -199,6 +206,7 @@ dist/
 ├── assets/
 │   ├── index.css
 │   ├── index.js
+│   ├── profile-photo.jpg
 │   └── qrcode-placeholder.svg
 └── index.html
 ```
@@ -264,7 +272,7 @@ public/CNAME
 
 ### 图片不显示
 
-确认图片在 `public/assets/` 中，并且 `index.html` 里使用的是类似 `assets/wechat-qr.png` 的相对路径。
+确认图片在 `assets/` 中，并且 `index.html` 里使用的是类似 `assets/wechat-qr.png` 的相对路径。
 
 ### JS/CSS 为什么不压缩？
 
