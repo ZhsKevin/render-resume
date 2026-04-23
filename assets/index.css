@@ -1,10 +1,3 @@
-$color-gray: #d1d1d1;
-$theme-color: #126ab8;
-$text-color: #333;
-$muted-color: #666;
-$page-bg: #eee;
-$font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
-
 *,
 *::before,
 *::after {
@@ -12,13 +5,13 @@ $font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
 }
 
 html {
-  background: $page-bg;
+  background: #eee;
 }
 
 body {
   margin: 0;
-  color: $text-color;
-  font-family: $font-family;
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
   font-size: 18px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -26,13 +19,12 @@ body {
 }
 
 a {
-  color: $theme-color;
+  color: #126ab8;
   text-decoration: none;
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-
-  &:hover {
-    color: #0b4d86;
-  }
+}
+a:hover {
+  color: #0b4d86;
 }
 
 ul {
@@ -72,59 +64,50 @@ img {
   width: 100%;
   padding: 46px 50px 2px;
   overflow: hidden;
-
-  .title {
-    width: 100%;
-    margin-bottom: 5px;
-    padding-bottom: 5px;
-    overflow: hidden;
-    border-bottom: 2px solid #1165b0;
-    font-weight: 300;
-  }
-
-  .name,
-  .info {
-    color: $text-color;
-  }
-
-  .name {
-    float: left;
-
-    h1 {
-      margin: 0;
-      font-family: "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3", $font-family;
-      font-size: 52px;
-      font-weight: 400;
-      line-height: 1.3;
-      letter-spacing: 3px;
-    }
-  }
-
-  .info {
-    float: left;
-    width: 100%;
-    margin-top: 18px;
-    line-height: 22px;
-
-    ul {
-      list-style: none;
-    }
-
-    li {
-      margin-bottom: 8px;
-      list-style: none;
-    }
-  }
-
-  &.has-profile-photo {
-    padding-right: 425px;
-    min-height: 275px;
-
-    .title,
-    .info {
-      width: 100%;
-    }
-  }
+}
+.content-hd .title {
+  width: 100%;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  overflow: hidden;
+  border-bottom: 2px solid #1165b0;
+  font-weight: 300;
+}
+.content-hd .name,
+.content-hd .info {
+  color: #333;
+}
+.content-hd .name {
+  float: left;
+}
+.content-hd .name h1 {
+  margin: 0;
+  font-family: "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3", "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 3px;
+}
+.content-hd .info {
+  float: left;
+  width: 100%;
+  margin-top: 18px;
+  line-height: 22px;
+}
+.content-hd .info ul {
+  list-style: none;
+}
+.content-hd .info li {
+  margin-bottom: 8px;
+  list-style: none;
+}
+.content-hd.has-profile-photo {
+  padding-right: 425px;
+  min-height: 275px;
+}
+.content-hd.has-profile-photo .title,
+.content-hd.has-profile-photo .info {
+  width: 100%;
 }
 
 .profile-photo {
@@ -138,13 +121,12 @@ img {
   border: 1px solid #d8d8d8;
   border-radius: 2px;
   background: #f7f7f7;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0;
-  }
+}
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
 }
 
 .content-bd {
@@ -155,11 +137,10 @@ img {
   min-height: 200px;
   padding: 8px 30px 30px;
   font-size: 16px;
-
-  section {
-    padding: 10px 15px;
-    overflow: hidden;
-  }
+}
+.content-bd section {
+  padding: 10px 15px;
+  overflow: hidden;
 }
 
 .section-hd {
@@ -204,10 +185,9 @@ img {
 
 .section-bd {
   overflow: hidden;
-
-  .item {
-    margin-bottom: 20px;
-  }
+}
+.section-bd .item {
+  margin-bottom: 20px;
 }
 
 .item-hd {
@@ -234,10 +214,10 @@ img {
 .btn {
   display: inline-block;
   padding: 0 5px;
-  border: 1px solid $theme-color;
+  border: 1px solid #126ab8;
   border-radius: 3px;
-  color: $theme-color;
-  font-family: Menlo, $font-family;
+  color: #126ab8;
+  font-family: Menlo, "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
   font-size: 14px;
   line-height: 18px;
   text-align: center;
@@ -261,13 +241,11 @@ img {
 }
 
 .description-list {
-  color: $text-color;
+  color: #333;
 }
 
-.project-entry {
-  & + & {
-    margin-top: 20px;
-  }
+.project-entry + .project-entry {
+  margin-top: 20px;
 }
 
 .file-col {
@@ -302,24 +280,22 @@ figcaption {
 
 .github-footer {
   margin-bottom: 20px;
-  color: $muted-color;
+  color: #666;
   font-size: 80%;
   text-align: center;
-
-  .footer-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    margin: 0 8px 10px;
-    color: $muted-color;
-  }
-
-  .footer-link-img {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin: 0;
-  }
+}
+.github-footer .footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 8px 10px;
+  color: #666;
+}
+.github-footer .footer-link-img {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin: 0;
 }
 
 @media screen and (max-width: 1024px) {
@@ -329,80 +305,65 @@ figcaption {
     border-radius: 0;
   }
 }
-
 @media screen and (max-width: 720px) {
   body {
     font-size: 16px;
   }
-
   .content-hd {
     padding: 72px 20px 2px;
-
-    .title {
-      text-align: center;
-    }
-
-    .name {
-      float: none;
-
-      h1 {
-        margin-top: 10px;
-        font-size: 46px;
-        line-height: 1.25;
-        letter-spacing: 0;
-      }
-    }
-
-    .info {
-      float: none;
-      margin-top: 28px;
-      text-align: center;
-    }
-
-    &.has-profile-photo {
-      padding-right: 20px;
-      min-height: 0;
-    }
   }
-
+  .content-hd .title {
+    text-align: center;
+  }
+  .content-hd .name {
+    float: none;
+  }
+  .content-hd .name h1 {
+    margin-top: 10px;
+    font-size: 46px;
+    line-height: 1.25;
+    letter-spacing: 0;
+  }
+  .content-hd .info {
+    float: none;
+    margin-top: 28px;
+    text-align: center;
+  }
+  .content-hd.has-profile-photo {
+    padding-right: 20px;
+    min-height: 0;
+  }
   .profile-photo {
     position: static;
     width: 132px;
     height: 174px;
     margin: 24px auto 0;
   }
-
   .content-bd {
     padding: 20px 20px 50px;
-
-    section {
-      padding-inline: 0;
-    }
   }
-
+  .content-bd section {
+    padding-inline: 0;
+  }
   .item-name {
     float: none;
     padding-right: 72px;
   }
-
   .file-col {
     flex-direction: column;
     align-items: center;
   }
 }
-
 @media print {
   html,
   body {
     background: #fff;
   }
-
   .content {
     width: 100%;
     margin: 0;
     border-radius: 0;
   }
-
   .github-footer {
     display: none;
   }
