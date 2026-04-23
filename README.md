@@ -67,12 +67,25 @@ dist/
 
 开启githubpages功能后则可直接访问。同理其余对象存储服务商均可提供此类似功能，推荐主流对象存储云服务商如阿里云OOS，腾讯云COS等。
 
+也可以使用脚本把本次生成的 `dist/` 内容发布到指定 GitHub 分支：
+
+```bash
+npm run publish:dist -- branch master
+```
+
+这个命令会先执行 `npm run build`，然后在临时目录中拉取目标分支，清空旧文件，复制 `dist/` 内容，提交并推送到 `origin/master`。脚本不会切换当前工作区分支。
+
 ## 命令速查
 
 ```bash
-npm install       # 初始化安装依赖
-npm run dev      # 启动本项目
-npm run build    # 生成静态页面
+# 初始化安装依赖
+npm install
+# 启动本项目
+npm run dev
+# 生成静态页面
+npm run build
+# 发布 dist下的文件到 master 分支
+npm run publish:dist -- branch master
 ```
 
 
