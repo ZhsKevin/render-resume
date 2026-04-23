@@ -68,6 +68,7 @@ img {
 }
 
 .content-hd {
+  position: relative;
   width: 100%;
   padding: 46px 50px 2px;
   overflow: hidden;
@@ -113,6 +114,36 @@ img {
       margin-bottom: 8px;
       list-style: none;
     }
+  }
+
+  &.has-profile-photo {
+    padding-right: 425px;
+    min-height: 275px;
+
+    .title,
+    .info {
+      width: 100%;
+    }
+  }
+}
+
+.profile-photo {
+  position: absolute;
+  top: 46px;
+  right: 140px;
+  width: 190px;
+  height: 250px;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid #d8d8d8;
+  border-radius: 2px;
+  background: #f7f7f7;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
   }
 }
 
@@ -305,7 +336,7 @@ figcaption {
   }
 
   .content-hd {
-    padding: 72px 20px 76px;
+    padding: 72px 20px 2px;
 
     .title {
       text-align: center;
@@ -327,6 +358,18 @@ figcaption {
       margin-top: 28px;
       text-align: center;
     }
+
+    &.has-profile-photo {
+      padding-right: 20px;
+      min-height: 0;
+    }
+  }
+
+  .profile-photo {
+    position: static;
+    width: 132px;
+    height: 174px;
+    margin: 24px auto 0;
   }
 
   .content-bd {

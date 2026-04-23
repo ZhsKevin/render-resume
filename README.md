@@ -46,6 +46,7 @@ http://localhost:9991/
 
 - `title`：浏览器标签页标题。
 - `name`：页面顶部姓名。
+- `profilePhoto`：证件照配置，默认关闭。
 - `basics`：求职意向、现居地区、电话、博客、邮箱。
 - `mainSections`：教育经历、校园经历、工作经历、社会实践、项目经历、相关技能。
 - `sideSections`：开发技能、项目演示、联系方式二维码。
@@ -87,6 +88,24 @@ http://localhost:9991/
   ]
 }
 ```
+
+### 配置证件照
+
+证件照开关在 `index.html` 的 `profilePhoto` 字段中，建议选择白底证件照：
+
+```json
+{
+  "profilePhoto": {
+    "enabled": false,
+    "src": "assets/profile-photo.jpg",
+    "alt": "证件照"
+  }
+}
+```
+
+- `enabled: false`：不显示证件照，页面保持无照片布局。
+- `enabled: true`：显示证件照，顶部蓝色线会缩短到照片左侧。
+- `src`：图片路径。建议把证件照放到 `public/assets/profile-photo.jpg`，构建后路径就是 `assets/profile-photo.jpg`。
 
 ## 配置二维码和图片
 

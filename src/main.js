@@ -181,6 +181,20 @@ function renderMedia(media = []) {
   return wrapper;
 }
 
+function renderProfilePhoto(photo) {
+  if (!photo?.enabled || !photo.src) {
+    return null;
+  }
+
+  const frame = createElement('figure', { className: 'profile-photo' });
+  frame.appendChild(createElement('img', {
+    src: photo.src,
+    alt: photo.alt || '证件照',
+  }));
+
+  return frame;
+}
+
 function renderSection(section, className) {
   const sectionElement = createElement('section', { className });
   const body = createElement('div', { className: 'section-bd' });
@@ -207,6 +221,7 @@ function renderHeader() {
   const name = createElement('div', { className: 'name' });
   const info = createElement('section', { className: 'info' });
   const basics = createElement('ul');
+  const profilePhoto = renderProfilePhoto(resume.profilePhoto);
 
   name.appendChild(createElement('h1', { text: resume.name }));
   title.appendChild(name);
@@ -225,7 +240,11 @@ function renderHeader() {
   });
 
   info.appendChild(basics);
-  appendChildren(header, [title, info]);
+  appendChildren(header, [title, info, profilePhoto]);
+
+  if (profilePhoto) {
+    header.classList.add('has-profile-photo');
+  }
 
   return header;
 }
