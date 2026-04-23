@@ -15,12 +15,6 @@ PC端：
 
 <img src="imgs/mobile.png" width="500" alt="移动端预览" style="zoom:33%;" />
 
-- `index.html`：放简历文本、链接、图片路径、页面标题等配置。
-- `src/main.scss`：只放样式。
-- `src/main.js`：只读取 `index.html` 里的配置并渲染页面。
-
-这样构建后，如果只是改一个文案、链接或标点，可以直接改 `dist/index.html`，不需要重新生成 JS 和 CSS。
-
 ## 环境要求
 
 - Node.js 20 或更高版本
@@ -35,6 +29,11 @@ git clone git@github.com:ZhsKevin/render-resume.git
 npm install
 npm run dev
 ```
+### 目录结构
+
+- `index.html`：放简历文本、链接、图片路径、页面标题等配置。
+- `src/main.scss`：只放样式。
+- `src/main.js`：只读取 `index.html` 里的配置并渲染页面。
 
 ### 实时对照修改简历内容
 
@@ -83,7 +82,7 @@ npm run build    # 生成静态页面
 
 ### 改了文案是否要重新构建？
 
-如果改的是 `dist/index.html` 里的 `resume-data` 配置，不需要重新构建。
+构建后，如果只是改一个文案、链接或标点等可渲染的非样式内容，可以直接改 `dist/index.html`，不需要重新生成 JS 和 CSS。不需要重新构建。
 
 如果改的是源码里的 `index.html`，需要重新执行 `npm run build` 才会更新 `dist/index.html`。
 
