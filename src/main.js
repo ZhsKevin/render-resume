@@ -148,7 +148,7 @@ function renderSectionHeader(title) {
   ]);
 }
 
-function renderBullets(items = []) {
+function renderItems(items = []) {
   const list = createElement('ul', { className: 'section-content' });
 
   items.forEach((item) => {
@@ -158,22 +158,22 @@ function renderBullets(items = []) {
   return list;
 }
 
-function renderDescriptions(descriptions = []) {
+function renderDto(dto = []) {
   const wrapper = createElement('div', { className: 'description-list' });
-  const text = Array.isArray(descriptions) ? descriptions.join(' ') : descriptions;
+  const text = Array.isArray(dto) ? dto.join(' ') : dto;
 
   String(text)
     .split(/\n+/)
-    .map((description) => description.trim())
+    .map((paragraph) => paragraph.trim())
     .filter(Boolean)
-    .forEach((description) => {
-      wrapper.appendChild(createElement('p', { text: description }));
+    .forEach((paragraph) => {
+      wrapper.appendChild(createElement('p', { text: paragraph }));
     });
 
   return wrapper;
 }
 
-function renderDescriptionList(items = []) {
+function renderDtoList(items = []) {
   const list = createElement('ul', { className: 'entry-description-list' });
 
   items.forEach((item) => {
@@ -183,36 +183,28 @@ function renderDescriptionList(items = []) {
   return list;
 }
 
-function renderEntry(entry) {
+function renderList(list) {
   const article = createElement('article', { className: 'entry' });
 
-  if (entry.heading) {
-    article.appendChild(createElement('h3', { className: 'entry-title', text: entry.heading }));
+  if (list.name) {
+    const title = createElement('h3', { className: 'entry-title' });
+
+    if (list.href) {
+      title.appendChild(createElement('a', { text: list.name, href: list.href }));
+    } else {
+      appendFormattedText(title, list.name);
+    }
+
+    article.appendChild(title);
   }
 
-  if (entry.descriptions?.length) {
-    article.appendChild(renderDescriptions(entry.descriptions));
+  if (list.dto?.length) {
+    article.appendChild(renderDto(list.dto));
   }
 
-  if (entry.descriptionList?.length) {
-    article.appendChild(renderDescriptionList(entry.descriptionList));
+  if (list.dtoList?.length) {
+    article.appendChild(renderDtoList(list.dtoList));
   }
-
-  return article;
-}
-
-function renderProject(project) {
-  const article = createElement('article', { className: 'entry project-entry' });
-  const title = createElement('h3', { className: 'entry-title' });
-  title.appendChild(createElement('a', { text: project.name, href: project.href }));
-
-  project.links?.forEach((link) => {
-    title.append(' - ');
-    title.appendChild(createElement('a', { text: link.label, href: link.href }));
-  });
-
-  article.appendChild(title);
-  article.appendChild(renderDescriptions(project.descriptions));
 
   return article;
 }
@@ -231,16 +223,12 @@ function renderItem(item) {
 
   article.appendChild(header);
 
-  if (item.bullets?.length) {
-    article.appendChild(renderBullets(item.bullets));
+  if (item.items?.length) {
+    article.appendChild(renderItems(item.items));
   }
 
-  item.entries?.forEach((entry) => {
-    article.appendChild(renderEntry(entry));
-  });
-
-  item.projects?.forEach((project) => {
-    article.appendChild(renderProject(project));
+  item.lists?.forEach((list) => {
+    article.appendChild(renderList(list));
   });
 
   return article;

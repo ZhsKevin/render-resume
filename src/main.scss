@@ -320,12 +320,6 @@ img {
   }
 }
 
-.project-entry {
-  & + & {
-    margin-top: 20px;
-  }
-}
-
 .file-col {
   display: flex;
   align-items: flex-start;
