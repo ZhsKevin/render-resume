@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *,
 *::before,
 *::after {
@@ -25,6 +26,10 @@ a {
 }
 a:hover {
   color: #0b4d86;
+}
+
+.text-strong {
+  font-weight: 800;
 }
 
 ul {
@@ -183,11 +188,37 @@ img {
   text-align: center;
 }
 
+.practice .section-title {
+  font-size: 17px;
+  line-height: 24px;
+}
+.practice .item-hd {
+  line-height: 24px;
+}
+.practice .item-name {
+  font-size: 1.1em;
+  line-height: 24px;
+}
+.practice .entry {
+  margin-left: 2em;
+}
+.practice .section-content li {
+  padding-left: 0;
+  text-indent: 2em;
+}
+.practice .entry-description-list li {
+  padding-left: 0;
+  text-indent: 2em;
+}
+.practice .description-list p {
+  text-indent: 2em;
+}
+
 .section-bd {
   overflow: hidden;
 }
 .section-bd .item {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .item-hd {
@@ -244,8 +275,20 @@ img {
   color: #333;
 }
 
-.project-entry + .project-entry {
-  margin-top: 20px;
+.entry-description-list {
+  margin: 6px 0 0;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+  word-break: break-word;
+}
+.entry-description-list li {
+  margin-top: 6px;
+  list-style: none;
+}
+.entry-description-list li::before {
+  content: "•";
+  margin-right: 0.45em;
 }
 
 .file-col {

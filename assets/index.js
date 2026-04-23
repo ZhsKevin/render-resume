@@ -40,7 +40,7 @@ function readResumeData() {
 function createElement(tagName, options = {}) {
 	const element = document.createElement(tagName);
 	if (options.className) element.className = options.className;
-	if (options.text) element.textContent = options.text;
+	if (options.text) appendFormattedText(element, options.text);
 	if (options.href) {
 		element.href = options.href;
 		element.rel = "noopener noreferrer";
@@ -48,6 +48,67 @@ function createElement(tagName, options = {}) {
 	if (options.src) element.src = options.src;
 	if (options.alt) element.alt = options.alt;
 	return element;
+}
+function findClosingStrongMarker(text, startIndex) {
+	for (let index = startIndex; index < text.length; index += 1) {
+		if (text[index] === "\\") {
+			index += 1;
+			continue;
+		}
+		if (text[index] === "*") return index;
+	}
+	return -1;
+}
+function parseFormattedText(value) {
+	const text = String(value ?? "");
+	const parts = [];
+	let buffer = "";
+	let isStrong = false;
+	function flush() {
+		if (buffer) {
+			parts.push({
+				text: buffer,
+				isStrong
+			});
+			buffer = "";
+		}
+	}
+	for (let index = 0; index < text.length; index += 1) {
+		const char = text[index];
+		const nextChar = text[index + 1];
+		if (char === "\\" && nextChar === "*") {
+			buffer += "*";
+			index += 1;
+			continue;
+		}
+		if (char === "*") {
+			if (isStrong) {
+				flush();
+				isStrong = false;
+				continue;
+			}
+			if (findClosingStrongMarker(text, index + 1) > index + 1) {
+				flush();
+				isStrong = true;
+				continue;
+			}
+		}
+		buffer += char;
+	}
+	flush();
+	return parts;
+}
+function appendFormattedText(parent, value) {
+	parseFormattedText(value).forEach((part) => {
+		if (!part.isStrong) {
+			parent.append(part.text);
+			return;
+		}
+		const strong = createElement("strong", { className: "text-strong" });
+		strong.textContent = part.text;
+		parent.appendChild(strong);
+	});
+	return parent;
 }
 function appendChildren(parent, children) {
 	children.filter(Boolean).forEach((child) => parent.appendChild(child));
@@ -76,46 +137,41 @@ function renderSectionHeader(title) {
 		createElement("span", { className: "section-title-r" })
 	]);
 }
-function renderBullets(items = []) {
+function renderItems(items = []) {
 	const list = createElement("ul", { className: "section-content" });
 	items.forEach((item) => {
 		list.appendChild(createElement("li", { text: item }));
 	});
 	return list;
 }
-function renderDescriptions(descriptions = []) {
+function renderDto(dto = []) {
 	const wrapper = createElement("div", { className: "description-list" });
-	const text = Array.isArray(descriptions) ? descriptions.join(" ") : descriptions;
-	String(text).split(/\n+/).map((description) => description.trim()).filter(Boolean).forEach((description) => {
-		wrapper.appendChild(createElement("p", { text: description }));
+	const text = Array.isArray(dto) ? dto.join(" ") : dto;
+	String(text).split(/\n+/).map((paragraph) => paragraph.trim()).filter(Boolean).forEach((paragraph) => {
+		wrapper.appendChild(createElement("p", { text: paragraph }));
 	});
 	return wrapper;
 }
-function renderEntry(entry) {
-	const article = createElement("article", { className: "entry" });
-	if (entry.heading) article.appendChild(createElement("h3", {
-		className: "entry-title",
-		text: entry.heading
-	}));
-	if (entry.descriptions?.length) article.appendChild(renderDescriptions(entry.descriptions));
-	return article;
-}
-function renderProject(project) {
-	const article = createElement("article", { className: "entry project-entry" });
-	const title = createElement("h3", { className: "entry-title" });
-	title.appendChild(createElement("a", {
-		text: project.name,
-		href: project.href
-	}));
-	project.links?.forEach((link) => {
-		title.append(" - ");
-		title.appendChild(createElement("a", {
-			text: link.label,
-			href: link.href
-		}));
+function renderDtoList(items = []) {
+	const list = createElement("ul", { className: "entry-description-list" });
+	items.forEach((item) => {
+		list.appendChild(createElement("li", { text: item }));
 	});
-	article.appendChild(title);
-	article.appendChild(renderDescriptions(project.descriptions));
+	return list;
+}
+function renderList(list) {
+	const article = createElement("article", { className: "entry" });
+	if (list.name) {
+		const title = createElement("h3", { className: "entry-title" });
+		if (list.href) title.appendChild(createElement("a", {
+			text: list.name,
+			href: list.href
+		}));
+		else appendFormattedText(title, list.name);
+		article.appendChild(title);
+	}
+	if (list.dto?.length) article.appendChild(renderDto(list.dto));
+	if (list.dtoList?.length) article.appendChild(renderDtoList(list.dtoList));
 	return article;
 }
 function renderItem(item) {
@@ -130,12 +186,9 @@ function renderItem(item) {
 		text: item.tag
 	}));
 	article.appendChild(header);
-	if (item.bullets?.length) article.appendChild(renderBullets(item.bullets));
-	item.entries?.forEach((entry) => {
-		article.appendChild(renderEntry(entry));
-	});
-	item.projects?.forEach((project) => {
-		article.appendChild(renderProject(project));
+	if (item.items?.length) article.appendChild(renderItems(item.items));
+	item.lists?.forEach((list) => {
+		article.appendChild(renderList(list));
 	});
 	return article;
 }
@@ -188,12 +241,12 @@ function renderHeader() {
 	title.appendChild(name);
 	resume.basics.forEach((item) => {
 		const row = createElement("li");
-		row.append(`${item.label}：`);
+		appendFormattedText(row, `${item.label}：`);
 		if (item.href) row.appendChild(createElement("a", {
 			text: item.value,
 			href: item.href
 		}));
-		else row.append(item.value);
+		else appendFormattedText(row, item.value);
 		basics.appendChild(row);
 	});
 	info.appendChild(basics);
