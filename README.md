@@ -1,6 +1,6 @@
 # render-resume
 
-一份简约的在线简历模板，基于 Vite 构建。项目现在把“文本内容 / 简历配置”和“样式 / 渲染逻辑”分开：
+基于Vite的简约高级个人简历项目,仅3个代码文件,3分钟即可部署到githubpages,开箱即用,可直接托管至如阿里云OOS静态页面
 
 ## 效果预览
 Github Pages部署：https://zhskevin.github.io/render-resume/
@@ -50,14 +50,14 @@ npm run build
 ```text
 dist/
 ├── assets/
-│   ├── index.css
-│   ├── index.js
+│   ├── index-<hash>.css
+│   ├── index-<hash>.js
 │   ├── profile-photo.jpg
 │   └── qrcode-placeholder.svg
 └── index.html
 ```
 
-生产构建已关闭压缩和哈希文件名，所以 `index.js` 和 `index.css` 会保持相对可读。
+生产构建已关闭压缩，生成dist后，样式文件内容仍然保持相对可读，不会被压缩，可实时编辑预览。
 
 ## 发布页面
 
@@ -105,7 +105,7 @@ npm run publish:dist -- branch master
 
 ### JS/CSS 为什么不压缩？
 
-这是刻意设置的。项目更重视部署后可维护性，因此 `vite.config.js` 里关闭了生产压缩和哈希文件名。
+这是刻意设置的。项目更重视部署后可维护性，因此 `vite.config.js` 里关闭了生产压缩；同时保留 JS/CSS 哈希文件名，避免部署后浏览器继续缓存旧资源。
 
 ### 文本怎么局部加粗？ / 我的星号消失了？
 
