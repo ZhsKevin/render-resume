@@ -122,7 +122,15 @@ function appendChildren(parent, children) {
   return parent;
 }
 
-function applyFontScale(element, scaleValue, { baseFontSize = 1, baseLineHeight = 1.5 } = {}) {
+function createInlineImage(src, alt = '', className = 'inline-text-img') {
+  return createElement('img', {
+    className,
+    src,
+    alt,
+  });
+}
+
+function applyFontScale(element, scaleValue, { baseFontSize = 1 } = {}) {
   const scale = Number(scaleValue);
 
   if (!Number.isFinite(scale) || scale <= 0) {
@@ -130,27 +138,30 @@ function applyFontScale(element, scaleValue, { baseFontSize = 1, baseLineHeight 
   }
 
   element.style.fontSize = `${baseFontSize * scale}em`;
-  element.style.lineHeight = String(baseLineHeight * scale);
 
   return element;
 }
 
-function renderLink({ label, value, href, icon }) {
-  const link = createElement('a', {
-    className: 'footer-link',
-    href,
-    text: label || value,
-  });
-
-  if (icon) {
-    link.prepend(createElement('img', {
-      className: 'footer-link-img',
-      src: icon,
-      alt: '',
-    }));
+function appendInlineContent(parent, { text, img, href, imgAlt = '' }) {
+  if (img) {
+    parent.appendChild(createInlineImage(img, imgAlt));
   }
 
-  return link;
+  if (href) {
+    parent.appendChild(createElement('a', { text, href }));
+  } else {
+    appendFormattedText(parent, text);
+  }
+
+  return parent;
+}
+
+function renderLink({ label, value, href, icon, img }) {
+  return appendInlineContent(createElement('span', { className: 'footer-link' }), {
+    text: label || value,
+    href,
+    img: img || icon,
+  });
 }
 
 function renderSectionHeader(title) {
@@ -200,14 +211,13 @@ function renderList(list) {
   const article = createElement('article', { className: 'entry' });
 
   if (list.name) {
-    const title = createElement('h3', { className: 'entry-title' });
-    applyFontScale(title, list.frontsize);
-
-    if (list.href) {
-      title.appendChild(createElement('a', { text: list.name, href: list.href }));
-    } else {
-      appendFormattedText(title, list.name);
-    }
+    const title = createElement('h3', { className: 'entry-title inline-text' });
+    applyFontScale(title, list.frontScale);
+    appendInlineContent(title, {
+      text: list.name,
+      href: list.href,
+      img: list.img,
+    });
 
     article.appendChild(title);
   }
@@ -322,12 +332,11 @@ function renderHeader() {
   resume.basics.forEach((item) => {
     const row = createElement('li');
     appendFormattedText(row, `${item.label}：`);
-
-    if (item.href) {
-      row.appendChild(createElement('a', { text: item.value, href: item.href }));
-    } else {
-      appendFormattedText(row, item.value);
-    }
+    appendInlineContent(row, {
+      text: item.value,
+      href: item.href,
+      img: item.img,
+    });
 
     basics.appendChild(row);
   });

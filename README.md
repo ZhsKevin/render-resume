@@ -151,7 +151,8 @@ npm run publish:dist -- branch master
     {
       "name": "XXXXXXXX商城",
       "href": "https://baidu.com",
-      "frontsize": 1.2,
+      "img": "assets/project-icon.png",
+      "frontScale": 1.2,
       "dtoList": [
         "第一条说明",
         "第二条说明"
@@ -161,7 +162,11 @@ npm run publish:dist -- branch master
 }
 ```
 
-`name` 是条目标题；有 `href` 时，`name` 会自动显示为链接。`dto` 是普通段落，`dtoList` 是多条圆点说明。`frontsize` 是 `name` 的倍率，例如 `1.2` 表示在默认字号基础上等比放大 20%，行高也会同步放大。
+`name` 是条目标题；有 `href` 时，`name` 会自动显示为链接。
+`dto` 是普通段落，`dtoList` 是多行段落配圆点说明。
+`frontScale` 是 `name` 的倍率，例如 `1.2` 表示在默认字号基础上放大 20%，用于加强提醒。
+`img` 是显示在文字前面的图片，图片高度会自动跟当前文字大小保持一致。
+`img` 也可以用于 `basics` 和 `footer` 等已有文本对象
 
 ### 长文本怎么编辑？
 

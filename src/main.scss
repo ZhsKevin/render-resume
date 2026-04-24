@@ -39,6 +39,21 @@ a {
   font-weight: 800;
 }
 
+.inline-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+
+.inline-text-img {
+  display: inline-block;
+  width: auto;
+  height: 1em;
+  flex: 0 0 auto;
+  border-radius: 0;
+  vertical-align: middle;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -362,13 +377,6 @@ figcaption {
     gap: 4px;
     margin: 0 8px 10px;
     color: $muted-color;
-  }
-
-  .footer-link-img {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin: 0;
   }
 }
 
