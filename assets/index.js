@@ -114,18 +114,34 @@ function appendChildren(parent, children) {
 	children.filter(Boolean).forEach((child) => parent.appendChild(child));
 	return parent;
 }
-function renderLink({ label, value, href, icon }) {
-	const link = createElement("a", {
-		className: "footer-link",
-		href,
-		text: label || value
+function createInlineImage(src, alt = "", className = "inline-text-img") {
+	return createElement("img", {
+		className,
+		src,
+		alt
 	});
-	if (icon) link.prepend(createElement("img", {
-		className: "footer-link-img",
-		src: icon,
-		alt: ""
+}
+function applyFontScale(element, scaleValue, { baseFontSize = 1 } = {}) {
+	const scale = Number(scaleValue);
+	if (!Number.isFinite(scale) || scale <= 0) return element;
+	element.style.fontSize = `${baseFontSize * scale}em`;
+	return element;
+}
+function appendInlineContent(parent, { text, img, href, imgAlt = "" }) {
+	if (img) parent.appendChild(createInlineImage(img, imgAlt));
+	if (href) parent.appendChild(createElement("a", {
+		text,
+		href
 	}));
-	return link;
+	else appendFormattedText(parent, text);
+	return parent;
+}
+function renderLink({ label, value, href, icon, img }) {
+	return appendInlineContent(createElement("span", { className: "footer-link" }), {
+		text: label || value,
+		href,
+		img: img || icon
+	});
 }
 function renderSectionHeader(title) {
 	return appendChildren(createElement("header", { className: "section-hd" }), [
@@ -162,12 +178,13 @@ function renderDtoList(items = []) {
 function renderList(list) {
 	const article = createElement("article", { className: "entry" });
 	if (list.name) {
-		const title = createElement("h3", { className: "entry-title" });
-		if (list.href) title.appendChild(createElement("a", {
+		const title = createElement("h3", { className: "entry-title inline-text" });
+		applyFontScale(title, list.frontScale);
+		appendInlineContent(title, {
 			text: list.name,
-			href: list.href
-		}));
-		else appendFormattedText(title, list.name);
+			href: list.href,
+			img: list.img
+		});
 		article.appendChild(title);
 	}
 	if (list.dto?.length) article.appendChild(renderDto(list.dto));
@@ -242,11 +259,11 @@ function renderHeader() {
 	resume.basics.forEach((item) => {
 		const row = createElement("li");
 		appendFormattedText(row, `${item.label}：`);
-		if (item.href) row.appendChild(createElement("a", {
+		appendInlineContent(row, {
 			text: item.value,
-			href: item.href
-		}));
-		else appendFormattedText(row, item.value);
+			href: item.href,
+			img: item.img
+		});
 		basics.appendChild(row);
 	});
 	info.appendChild(basics);
@@ -275,10 +292,10 @@ function renderResume() {
 	const body = createElement("div", { className: "content-bd" });
 	const left = createElement("div", { className: "content-left" });
 	const right = createElement("div", { className: "content-right" });
-	resume.mainSections.forEach((section) => {
+	(resume.mainSections || []).forEach((section) => {
 		left.appendChild(renderSection(section, "practice"));
 	});
-	resume.sideSections.forEach((section) => {
+	(resume.sideSections || []).forEach((section) => {
 		right.appendChild(renderSection(section, "file"));
 	});
 	appendChildren(body, [left, right]);
