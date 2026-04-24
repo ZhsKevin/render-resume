@@ -122,6 +122,19 @@ function appendChildren(parent, children) {
   return parent;
 }
 
+function applyFontScale(element, scaleValue, { baseFontSize = 1, baseLineHeight = 1.5 } = {}) {
+  const scale = Number(scaleValue);
+
+  if (!Number.isFinite(scale) || scale <= 0) {
+    return element;
+  }
+
+  element.style.fontSize = `${baseFontSize * scale}em`;
+  element.style.lineHeight = String(baseLineHeight * scale);
+
+  return element;
+}
+
 function renderLink({ label, value, href, icon }) {
   const link = createElement('a', {
     className: 'footer-link',
@@ -188,6 +201,7 @@ function renderList(list) {
 
   if (list.name) {
     const title = createElement('h3', { className: 'entry-title' });
+    applyFontScale(title, list.frontsize);
 
     if (list.href) {
       title.appendChild(createElement('a', { text: list.name, href: list.href }));
@@ -353,11 +367,11 @@ function renderResume() {
   const left = createElement('div', { className: 'content-left' });
   const right = createElement('div', { className: 'content-right' });
 
-  resume.mainSections.forEach((section) => {
+  (resume.mainSections || []).forEach((section) => {
     left.appendChild(renderSection(section, 'practice'));
   });
 
-  resume.sideSections.forEach((section) => {
+  (resume.sideSections || []).forEach((section) => {
     right.appendChild(renderSection(section, 'file'));
   });
 
