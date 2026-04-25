@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="H&S 在线简历">
-    <title>张得帅丨简历</title>
-    <link rel="icon" href="assets/site-logo.svg" type="image/svg+xml">
+    <meta name="description" content="render-resume 的虚构简历示例，适合个人主页、作品集和在线简历展示。">
+    <title>沈星雨丨AI 工程师简历示例</title>
+    <link rel="icon" href="assets/imgs/site-logo.svg" type="image/svg+xml">
     <base target="_blank">
   </head>
   <body>
@@ -13,19 +13,18 @@
 
     <script id="resume-data" type="application/json">
       {
-        "title": "张得帅丨简历",
-        "name": "张得帅",
+        "title": "沈星雨丨AI 工程师简历示例",
+        "name": "沈星雨",
         "profilePhoto": {
           "enabled": false,
-          "src": "assets/profile-photo.jpg",
-          "alt": "证件照"
+          "src": "assets/imgs/avatar-placeholder.svg",
+          "alt": "示例头像"
         },
         "basics": [
-          { "label": "求职意向", "value": "XXXXX" },
-          { "label": "现居地区", "value": "某某省某某市" },
-          { "label": "联系方式", "value": "188-8888-8888", "href": "tel:18888888888" },
-          { "label": "博客主页", "value": "Baidu.com", "href": "https://baidu.com/" },
-          { "label": "个人邮箱", "value": "Zds1012@163.com", "href": "mailto:Zds1012@163.com" }
+          { "label": "当前城市", "value": "北京" },
+          { "label": "职业方向", "value": "AI Native 应用 / 智能体平台 / 云原生架构" },
+          { "label": "个人主页", "value": "example.com", "href": "https://example.com/" },
+          { "label": "联系邮箱", "value": "hello@example.com", "href": "mailto:hello@example.com" }
         ],
         "mainSections": [
           {
@@ -33,21 +32,11 @@
             "items": [
               {
                 "title": "教育经历：",
-                "tag": "教育经历",
+                "tag": "教育",
                 "items": [
-                  "XX大学 ｜ XXX专业 ｜ 博士（2088.9 - 2088.7）",
-                  "XX大学 ｜ XXX专业 ｜ 研究生（2088.9 - 2088.7）",
-                  "XX大学 ｜ XXX专业 ｜ 本科（2088.9 - 2088.7）",
-                  "英文水平：CET6"
-                ]
-              },
-              {
-                "title": "校园经历：",
-                "tag": "校园",
-                "items": [
-                  "2088.7 - 2088.7   学生会主席",
-                  "2088.7 - 2088.7   XX省十佳",
-                  "2088.7 - 2088.7   优秀党员"
+                  "2017.9 – 2021.7  清华大学 计算机科学与技术 ｜ 本科",
+                  "2021.9 – 2024.7  北京大学 人工智能研究院 ｜ 硕士",
+                  "研究方向：大模型应用工程、检索增强生成、多智能体协同与可信 AI。"
                 ]
               },
               {
@@ -55,130 +44,150 @@
                 "tag": "工作",
                 "lists": [
                   {
-                    "name": "2088.1 - 2088.3  某某某某软件科技有限公司 ｜ Java开发工程师",
+                    "name": "2025.1 – 至今  Google DeepMind ｜ AI Platform Engineer",
                     "dtoList": [
-                      "主要复测什么东西，工作内容是什么 写你做了什么东西，编写过什么东西，主要复测什么东西，工作内容是什么",
-                      "承担什么什么*开发*任务，按计划完成了什么什么目标 协助什么什么完成了什么",
-                      "最终什么什么 完成了什么什么工作并解决了什么什么、什么什么中出现的什么问题"
+                      "参与企业级智能体编排平台建设，负责 Agent Runtime、工具调用网关、长短期记忆管理与安全审计链路设计。",
+                      "将多模型路由、Function Calling、RAG 与评测体系沉淀为可复用平台能力，支持研发、运营、数据分析等多个场景快速搭建 AI Copilot。",
+                      "推动提示词版本管理、灰度实验、离线回放与在线观测落地，使智能体应用从“能跑”升级到“可评估、可治理、可持续迭代”。"
                     ]
                   },
                   {
-                    "name": "2088.7 - 2088.10  某某某某软件科技有限公司 ｜ 软件开发工程师",
-                    "dto": [
-                      "期间主要负责某某某工作，处理什么什么",
-                      "获得某某某某称号，做了什么什么事情",
-                      "期间掌握什么什么什么技能以及什么什么技能、对于什么什么有了什么"
-                    ]
-                  },
-                  {
-                    "name": "2088.1 - 2088.6  某某某某集团 ｜ 业务行政部门 ｜ 基金经理",
-                    "dto": [
-                      "期间主要负责某某某工作，处理什么什么",
-                      "获得某某某某称号，做了什么什么事情",
-                      "期间掌握什么什么什么技能以及什么什么技能、对于什么什么有了什么"
-                    ]
-                  }
-                ]
-              },
-              {
-                "title": "社会实践：",
-                "tag": "实践",
-                "lists": [
-                  {
-                    "name": "2088.9 - 2088.10  某个省某个大赛某某某某",
-                    "dto": [
-                      "担任什么什么，完成了什么什么等任务，并获得什么什么省什么什么大赛什么什么称号。"
-                    ]
-                  },
-                  {
-                    "name": "2088.8 - 2088.8  某某某某某某某某某"
-                  }
-                ]
-              },
-              {
-                "title": "项目经历：",
-                "tag": "项目",
-                "lists": [
-                  {
-                    "name": "XXXXXXXX商城",
-                    "href": "https://baidu.com",
+                    "name": "2024.3 – 2024.12  阿里云智能 ｜ 云原生 AI 工程师",
                     "dtoList": [
-                      "主要复测什么东西，工作内容是什么 写你做了什么东西，编写过什么东西，主要复测什么东西，工作内容是什么 写你做了什么东西，编写过什么东西，主要复测什么东西，工作内容是什么 写你做了什么东西，编写过什么东西",
-                      "承担什么什么*开发*任务，按计划完成了什么什么目标 协助什么什么完成了什么",
-                      "最终什么什么 完成了什么什么工作并解决了什么什么、什么什么中出现的什么问题"
+                      "负责向量检索、文档解析、知识库索引与推理服务的云原生化改造，提升多租户场景下的隔离性、弹性和成本效率。",
+                      "基于 Kubernetes、Serverless 与可观测平台构建模型服务交付流水线，缩短企业知识助手从配置到上线的周期。"
                     ]
                   },
                   {
-                    "name": "XXXXXXXX社区",
-                    "href": "https://baidu.com",
-                    "dto": [
-                      "XXXXXXXX社区为一个XXXXXXXX，用户注册后发布到帖子或者说说到网站上，作为一个匿名社交的社交平台，使用户在此社交平台上实现信息共享，交流学习等功能。",
-                      "项目采用XXXXXXXXXXXXXXXX开发XXXXXXXX，基于XXXXXXXXXXXXXXXX整合XXXXXXXX，前端采用XXXXXXXX结合XXXXXXXX，XXXXXXXX结合XXXXXXXX实现XXXXXXXX，结合XXXXXXXX技术搭建的一个XXXXXXXXXXXXXXXX平台。"
-                    ]
-                  },
-                  {
-                    "name": "XXXXXXXX系统",
-                    "href": "https://baidu.com",
-                    "dto": [
-                      "XXXXXXXX为一套基于XXXXXXXX方法 XXXXXXXX 结合 XXXXXXXX 实现的XXXXXXXX以及XXXXXXXX的系统，本系统分为XXXXXXXXXXXXXXXX，模块XXXXXXXX，之间的数据传输均使用JSON格式传输。",
-                      "XXXXXXXXXXXXXXXX模块，使用XXXXXXXX结合XXXXXXXX框架，通过XXXXXXXX等技术实现实时XXXXXXXX。XXXXXXXX模块，主要使用的XXXXXXXX包括XXXXXXXX、XXXXXXXX、XXXXXXXX、XXXXXXXX等。所用XXXXXXXX为XXXXXXXX、XXXXXXXX为XXXXXXXX方法。"
-                    ]
-                  },
-                  {
-                    "name": "XXXXXXXX算法",
-                    "img": "assets/site-logo.svg",
-                    "href": "https://baidu.com",
-                    "dto": [
-                      "XXXXXXXXXXXXXXXX模块，使用XXXXXXXX结合XXXXXXXX框架，通过XXXXXXXX等技术实现实时XXXXXXXX。XXXXXXXX模块，主要使用的XXXXXXXX包括XXXXXXXX",
-                      "所用XXXXXXXX为XXXXXXXX、XXXXXXXX为XXXXXXXX方法"
+                    "name": "2022.6 – 2024.2  字节跳动 ｜ 后端研发工程师",
+                    "dtoList": [
+                      "参与实时推荐与内容理解平台建设，负责高并发特征服务、事件流处理与实验平台后端能力。",
+                      "围绕低延迟、高可用和数据一致性优化核心链路，在亿级请求场景下保障推荐实验稳定运行。"
                     ]
                   }
-                ]
-              },
-              {
-                "title": "相关技能：",
-                "tag": "技能",
-                "items": [
-                  "英语水平：CET-6",
-                  "编程语言：熟练使用XXXXXXXX 语言、熟悉XXXXXXXX、XXXXXXXX、XXXXXXXX等编程语言。",
-                  "开发工具：熟练使用XXXXXXXX、XXXXXXXX、XXXXXXXX、XXXXXXXX、XXXXXXXX、XXXXXXXX等开发工具。",
-                  "兴趣爱好：XXXXXXXX、XXXXXXXX、XXXXXXXX。XXXXXXXXXXXXXXXXXXXXXXXX。"
-                ]
-              }
-            ]
-          }
-        ],
-        "sideSections": [
-          {
-            "title": "开发技能",
-            "items": [
-              {
-                "items": [
-                  "熟练掌握 XXXXXXXX、XXXXXXXX、XXXXXXXX 等开源框架XXXXXXXX，能快速熟悉框XXXXXXXX下的XXXXXXXX开发，深刻理解 XXXXXXXX 核心运行流程，熟练使用 XXXXXXXX 逆向工程进行快速代码构建，理解 XXXXXXXX XXXXXXXX、XXXXXXXX；",
-                  "熟练掌握 XXXXXXXX 框架的使用，能够整合 XXXXXXXX、XXXXXXXX、XXXXXXXX、XXXXXXXX、XXXXXXXX、XXXXXXXX 等技术；熟悉XXXXXXXX框架 XXXXXXXX，能基于 XXXXXXXX 进行XXXXXXXX的开发；",
-                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
                 ]
               }
             ]
           },
           {
-            "title": "项目演示",
-            "media": [
+            "title": "项目经历",
+            "items": [
               {
-                "caption": "什么什么社区",
-                "image": "assets/qrcode-placeholder.svg",
-                "href": "https://baidu.com",
-                "alt": "什么什么社区演示二维码"
-              },
+                "lists": [
+                  {
+                    "name": "Orion AgentMesh｜企业级智能体编排平台",
+                    "frontScale": "1.3",
+                    "href": "mdviewer.html?file=assets/markdown/agent-mesh.md",
+                    "dtoList": [
+                      "面向企业内部复杂流程打造的多智能体协作平台，支持任务拆解、工具调用、审批流联动、审计回放与权限隔离。",
+                      "通过模型路由、状态机编排、记忆管理和沙箱执行机制，让智能体从单轮问答扩展为可治理的业务执行系统。",
+                      "重点沉淀任务回放、权限边界、失败重试和质量评测能力，让 AI 应用具备长期迭代的工程基础。"
+                    ]
+                  },
+                  {
+                    "name": "Nebula RAG｜多模态知识检索与推理系统",
+                    "frontScale": "1.3",
+                    "href": "mdviewer.html?file=assets/markdown/multimodal-rag.md",
+                    "dtoList": [
+                      "构建覆盖文本、表格、图片和演示文稿的企业知识中台，支持语义检索、结构化问答、引用溯源与答案可信度评估。",
+                      "在文档切分、向量召回、重排、上下文压缩和答案校验链路上做工程化优化，降低幻觉并提升复杂问题命中率。",
+                      "提供知识库运营看板，持续追踪无答案问题、低质量文档、热门主题和检索链路瓶颈。"
+                    ]
+                  },
+                  {
+                    "name": "FeatherServe｜边缘端大模型推理加速框架",
+                    "frontScale": "1.3",
+                    "href": "mdviewer.html?file=assets/markdown/edge-inference.md",
+                    "dtoList": [
+                      "面向端侧设备与边缘节点设计轻量推理运行时，支持模型量化、分层缓存、动态批处理和离线降级策略。",
+                      "在弱网与低算力环境中保障智能助手、视觉识别和工业巡检等场景稳定运行。",
+                      "通过设备分组、模型灰度和运行指标采集，支持不同硬件条件下的精细化部署与调优。"
+                    ]
+                  },
+                  {
+                    "name": "ApolloSim Lab｜自动驾驶场景仿真与评测平台",
+                    "frontScale": "1.3",
+                    "href": "mdviewer.html?file=assets/markdown/autonomy-sim.md",
+                    "dtoList": [
+                      "基于生成式场景构造、传感器回放与指标评测体系，支持自动驾驶算法在长尾风险场景中的持续验证。",
+                      "将道路拓扑、交通参与者行为和事故边界条件参数化，提升仿真用例生产效率。",
+                      "自动生成风险曲线、关键帧和失败原因摘要，帮助算法团队快速定位策略退化原因。"
+                    ]
+                  },
+                  {
+                    "name": "Helios Quant Lab｜实时风控与因子研究平台",
+                    "frontScale": "1.3",
+                    "href": "mdviewer.html?file=assets/markdown/quant-lab.md",
+                    "dtoList": [
+                      "一套面向量化研究的实时数据与风控平台，覆盖行情接入、因子计算、策略回测、风险预警和实验追踪。",
+                      "通过流式计算与特征仓库整合，让研究、验证和上线链路具备更高复用性。",
+                      "内置实验复现、风险解释和策略报告生成能力，让研究结果更容易被审阅和持续改进。"
+                    ]
+                  },
+                  {
+                    "name": "render-resume｜静态简历与作品集模板",
+                    "frontScale": "1.3",
+                    "href": "mdviewer.html?file=assets/markdown/resume-pages.md",
+                    "dtoList": [
+                      "一个由 JSON 驱动的 Vite 静态页面项目，适合快速搭建在线简历、作品集和项目说明页面。",
+                      "默认提供虚构示例数据、Markdown 项目详情页、响应式样式和 GitHub Pages 友好的构建流程。",
+                      "内容与样式分层清晰，新手可以直接改 JSON 文案，熟悉前端后也能继续扩展组件和主题。"
+                    ]
+                  },
+                  {
+                    "name": "更多虚构项目说明",
+                    "frontScale": "1.3",
+                    "href": "mdviewer.html?file=assets/markdown/project-guide.md",
+                    "dtoList": [
+                      "这里收录了本模板内置的全部示例项目，方便查看每类项目该如何组织说明。",
+                      "所有人物、学校、公司、项目和数据均为虚构内容，可安全用于公开仓库演示。",
+                      "你可以把它当作项目写作参考，再替换为自己的真实项目背景、技术方案和成果数据。"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "开发技能",
+            "items": [
               {
-                "caption": "什么什么商城",
-                "image": "assets/qrcode-placeholder.svg",
-                "href": "https://baidu.com",
-                "alt": "什么什么商城演示二维码"
+                "lists": [
+                  {
+                    "name": "AI Native 工程",
+                    "frontScale": "1.3",
+                    "dtoList": [
+                      "熟悉智能体系统设计，能将 LLM、工具调用、RAG、长期记忆、任务规划和评测闭环组合为可落地的应用架构。",
+                      "理解 Prompt Engineering、Function Calling、多模型路由、上下文压缩和答案可信度校验等关键技术。",
+                      "擅长把 AI 能力产品化：从原型验证、指标定义、灰度实验到可观测治理都有完整工程经验。"
+                    ]
+                  },
+                  {
+                    "name": "后端与云原生",
+                    "frontScale": "1.3",
+                    "dtoList": [
+                      "熟悉 Java、TypeScript、Python 等技术栈，具备高并发服务、异步任务、权限体系和平台化后端建设经验。",
+                      "熟悉 Spring Boot、Node.js、FastAPI、Kubernetes、Docker、CI/CD、Serverless 与服务可观测体系。"
+                    ]
+                  },
+                  {
+                    "name": "数据与中间件",
+                    "frontScale": "1.3",
+                    "dtoList": [
+                      "熟悉 MySQL、PostgreSQL、Redis、Elasticsearch、Kafka、RabbitMQ、对象存储和向量数据库的常见工程实践。",
+                      "具备 SQL 优化、缓存治理、消息解耦、数据同步、特征计算和检索系统调优经验。"
+                    ]
+                  },
+                  {
+                    "name": "协作与表达",
+                    "frontScale": "1.3",
+                    "dtoList": [
+                      "能把复杂技术方案拆成清晰的路线图、接口契约和验收指标，推动跨职能团队协作落地。",
+                      "习惯用文档、示意图、复盘和评测数据沉淀经验，让项目持续迭代而不是停留在一次性交付。",
+                      "英文可作为工作语言阅读论文、官方文档和工程规范。"
+                    ]
+                  }
+                ]
               }
             ]
           },
@@ -186,25 +195,18 @@
             "title": "与我联系",
             "media": [
               {
-                "caption": "微信",
-                "image": "assets/qrcode-placeholder.svg",
-                "alt": "微信二维码"
+                "caption": "示例二维码（请替换为你的联系方式）",
+                "image": "assets/imgs/qrcode-placeholder.svg",
+                "alt": "示例二维码"
               }
             ]
           }
         ],
+        "sideSections": [],
         "footer": [
-          { "label": "Copyright ©H&S 2020 - 2029", "href": "https://baidu.com" },
-          { "label": "下载 PDF 版简历", "href": "https://baidu.com/resume" },
-          {
-            "label": "X公网安备 XXXXXXXXXXXXXX号",
-            "href": "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=XXXXXXXXXXX"
-          },
-          {
-            "label": "XICP备XXXXXXXXXX号",
-            "href": "https://beian.miit.gov.cn/",
-            "img": "assets/beian.png"
-          }
+          { "label": "render-resume", "href": "https://github.com/" },
+          { "label": "示例数据均为虚构，请发布前替换为真实内容。" },
+          { "label": "Powered by Vite", "href": "https://vite.dev/" }
         ]
       }
     </script>

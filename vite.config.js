@@ -25,6 +25,11 @@ export default defineConfig({
     minify: false,
     cssMinify: false,
     rollupOptions: {
+      input: {
+        notFound: resolve(process.cwd(), '404.html'),
+        index: resolve(process.cwd(), 'index.html'),
+        mdviewer: resolve(process.cwd(), 'mdviewer.html'),
+      },
       output: {
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',

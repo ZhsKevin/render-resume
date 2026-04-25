@@ -9,11 +9,11 @@ Github Pages部署：https://zhskevin.github.io/render-resume/
 
 PC端：
 
-<img src="imgs/pc.png" alt="pc端预览" style="zoom:20%;" />
+<img src="readme-imgs/pc.png" alt="pc端预览" style="zoom:20%;" />
 
 移动端：
 
-<img src="imgs/mobile.png" width="500" alt="移动端预览" style="zoom:33%;" />
+<img src="readme-imgs/mobile.png" width="500" alt="移动端预览" style="zoom:33%;" />
 
 ## 环境要求
 
@@ -101,7 +101,7 @@ npm run publish:dist -- branch master
 
 ### 图片不显示？
 
-确认图片在 `assets/` 中，并且 `index.html` 里使用的是类似 `assets/wechat-qr.png` 的相对路径。
+确认图片在 `assets/imgs/` 中，并且 `index.html` 里使用的是类似 `assets/imgs/wechat-qr.png` 的相对路径。
 
 ### JS/CSS 为什么不压缩？
 
@@ -151,7 +151,7 @@ npm run publish:dist -- branch master
     {
       "name": "XXXXXXXX商城",
       "href": "https://baidu.com",
-      "img": "assets/project-icon.png",
+      "img": "assets/imgs/project-icon.png",
       "frontScale": 1.2,
       "dtoList": [
         "第一条说明",
@@ -218,7 +218,7 @@ npm run publish:dist -- branch master
 {
   "profilePhoto": {
     "enabled": false,
-    "src": "assets/profile-photo.jpg",
+    "src": "assets/imgs/profile-photo.jpg",
     "alt": "证件照"
   }
 }
@@ -226,7 +226,7 @@ npm run publish:dist -- branch master
 
 - `enabled: false`：不显示证件照，页面保持无照片布局。
 - `enabled: true`：显示证件照，顶部蓝色线会缩短到照片左侧。
-- `src`：图片路径。建议把证件照放到 `assets/profile-photo.jpg`，构建后路径仍然是 `assets/profile-photo.jpg`。
+- `src`：图片路径。建议把证件照放到 `assets/imgs/profile-photo.jpg`，构建后路径仍然是 `assets/imgs/profile-photo.jpg`。
 
 ## 怎么配置二维码和图片？
 
@@ -247,7 +247,7 @@ dist/assets/
 ```json
 {
   "caption": "微信",
-  "image": "assets/qrcode-placeholder.svg",
+  "image": "assets/imgs/qrcode-placeholder.svg",
   "alt": "微信二维码"
 }
 ```
@@ -257,7 +257,7 @@ dist/assets/
 ```json
 {
   "caption": "微信",
-  "image": "assets/wechat-qr.png",
+  "image": "assets/imgs/wechat-qr.png",
   "alt": "微信二维码"
 }
 ```
@@ -267,19 +267,19 @@ dist/assets/
 浏览器标签页上的网站 logo 使用 favicon 配置，在 `index.html` 的 `<head>` 中：
 
 ```html
-<link rel="icon" href="assets/site-logo.svg" type="image/svg+xml">
+<link rel="icon" href="assets/imgs/site-logo.svg" type="image/svg+xml">
 ```
 
 默认文件位置：
 
 ```text
-assets/site-logo.svg
+assets/imgs/site-logo.svg
 ```
 
 如果要替换成自己的 logo，直接替换这个文件即可。也可以改成其他文件名，例如：
 
 ```html
-<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="icon" href="assets/imgs/favicon.png" type="image/png">
 ```
 
 ## 配置样式
