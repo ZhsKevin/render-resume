@@ -163,8 +163,4 @@ npm run publish:dist -- branch master
 
 ## FAQ
 
-字段写法、图片路径、局部加粗、二维码、证件照、自定义域名等细节已经移到 [docs/QA.md](docs/QA.md)。
-
-## 致谢
-
-这个项目刻意保持小而透明：用 Vite 做构建，用 Sass 写样式，用 markdown-it 承接项目详情，用原生 DOM API 渲染简历。它更像一份可以继续改造的静态模板，而不是一个需要长期维护后端服务的系统。
+字段写法、图片路径、局部加粗、二维码、证件照、自定义域名等细节请参考 [docs/QA.md](docs/QA.md)。
