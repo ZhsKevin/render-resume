@@ -1,6 +1,6 @@
 # render-resume
 
-一个轻量、可部署、可继续二次开发的在线简历与作品集模板。内容写在 `index.html` 的 JSON 里，项目详情写成 Markdown，构建后就是一份可以直接托管到 GitHub Pages、对象存储、Nginx 或 CDN 的静态站点。
+一款支持原生Markdown文件展示的基于Vite搭建的简约高级个人简历，可一键部署Github Pages或托管至云服务商对象存储。
 
 [在线预览](https://zhskevin.github.io/render-resume/) · [常见问题](docs/QA.md) · [示例项目目录](assets/markdown/project-guide.md)
 
@@ -18,7 +18,7 @@ PC 端：
 
 <img src="readme-imgs/pc.png" alt="PC 端简历预览" width="560">
 
-解析markdown文件：
+解析原生markdown文件：
 
 <img src="readme-imgs/markdown-preview.png" alt="移动端简历预览" width="560">
 
@@ -31,7 +31,7 @@ PC 端：
 ## 特性
 
 - `JSON` 驱动简历内容：姓名、基础信息、经历、项目、二维码和页脚都集中在 `index.html` 中。
-- 内置 Markdown 详情页：项目条目可以跳到 `assets/markdown/*.md`，适合写更完整的项目介绍、设计说明或作品集文章。
+- 内置 Markdown 阅读器：支持实时预览markdown文件，默认目录： `assets/markdown/*.md`，适合写更完整的项目介绍、设计说明或作品集文章。
 - 静态部署友好：`npm run build` 后上传整个 `dist/` 即可，无服务端依赖。
 - 构建产物可读：生产构建关闭 JS/CSS 压缩，方便部署后做轻量排查或文案修正。
 - 响应式与打印友好：默认覆盖桌面端、移动端和打印场景。
@@ -40,10 +40,16 @@ PC 端：
 ## 快速开始
 
 ```bash
-git clone git@github.com:ZhsKevin/render-resume.git
-cd render-resume
+fork本项目,通过ssh的方式 git clone到本地,于根目录下执行
+
+# 初始化安装依赖
 npm install
+# 启动本项目
 npm run dev
+# 生成静态页面
+npm run build
+# 发布 dist下的文件到 master 分支
+npm run publish:dist -- branch master
 ```
 
 开发服务默认运行在：
@@ -58,18 +64,12 @@ http://localhost:9991
 npm run build
 ```
 
-预览构建结果：
-
-```bash
-npm run preview
-```
-
 ## 如何修改内容
 
-主要改这几处就够了：
+主要改这几处：
 
 - `index.html`：简历主体数据，包含基础信息、经历、项目链接、二维码和页脚。
-- `assets/markdown/`：项目详情页，每个 `.md` 文件都可以通过 `mdviewer.html?file=assets/markdown/xxx.md` 打开。
+- `assets/markdown/`：项目详情页，每个 `.md` 文件都可以通过 `mdviewer.html?file=assets/markdown/xxx.md` 打开。修改前建议先清空已有示例文件。
 - `assets/imgs/`：头像、二维码、备案图标、站点图标等公开图片。
 - `assets/files/`：PDF 简历或其他可下载附件。
 - `src/main.scss`：简历页面样式。
@@ -146,13 +146,17 @@ dist/
 
 手动发布时，把整个 `dist/` 上传到 GitHub Pages、对象存储、Nginx、宝塔面板或 CDN 控制台即可。
 
-也可以把 `dist/` 发布到指定 GitHub 分支：
+也可以一键把 `dist/` 发布到指定 GitHub 分支（默认master）：
 
 ```bash
 npm run publish:dist -- branch master
 ```
 
-这个命令会先执行 `npm run build`，再把构建结果复制到临时目录、提交并推送到 `origin/master`。脚本不会切换当前工作区分支。
+这个命令会先执行 `npm run build`，再把构建结果复制到临时目录、提交并推送到 `origin/master`。 脚本不会切换当前工作区分支。
+
+如：此分支是已经发布好的文件直接上传后的效果：https://github.com/ZhsKevin/render-resume/tree/master
+
+开启githubpages功能后则可直接访问。同理其余对象存储服务商均可提供此类似功能，推荐主流对象存储云服务商如阿里云OOS，腾讯云COS等。
 
 ## 依赖
 
